@@ -1,40 +1,49 @@
+A VPC (Virtual Private Cloud) in AWS is a logically isolated network within the AWS cloud where you can launch and manage your resources, such as servers (EC2), databases, and other services.
+
+Key Points:
+* Isolation: A VPC provides a private, customizable network for your AWS resources, isolated from other users.
+* Customization: You can define IP address ranges (using CIDR blocks), create subnets, set up route tables, and configure internet or VPN access.
+* Connectivity: VPCs allow you to connect securely to the internet, other VPCs, or your on-premises data center.
+* Security: You can control inbound and outbound traffic using security groups and network access control lists (NACLs).
+
 How to Build AWS VPC using Terraform – Step by Step
 
-Step 1: Create a VPC
-Step 2: Create Subnets
-Step 3: Set up Internet Gateway
-Step 4: Create a Route Table
-Step 5: Associate Public Subnets with the Second Route Table
+* Step 1: Create a VPC
+* Step 2: Create Subnets
+* Step 3: Set up Internet Gateway
+* Step 4: Create a Route Table
+* Step 5: Associate Public Subnets with the Second Route Table
 
-Creating a VPC module usually involves at least the following components:
-•	VPC(s)
-•	Subnet(s)
-•	Internet Gateway(s)
-•	Route Tables
-•	NAT Gateway(s) – Optional
-•	Security Group(s) – These can also be part of an EC2 module or a separate module
-•	Network Access Control List(s) – Optional
-•	Peering – Optional
 
-This is the minimum structure of a module:
-•	main.tf: Contains the core resource declarations and configurations for the module.
-•	variables.tf: Defines input variables that allow users to customize the module’s behavior.
-•	outputs.tf: Provides information about the created resources.
-•	providers.tf: Defines the versions used for the providers and terraform
-•	README.md: Documentation on how to use the module, including descriptions of input variables and outputs.
+**Creating a VPC module usually involves at least the following components:**
 
-After this execute all these terraform files using the below commands one by one .
+- **VPC(s):** A logically isolated network in AWS for launching cloud resources.
+- **Subnet(s):** Smaller sections within a VPC to organize and isolate resources.
+- **Internet Gateway(s)**: A gateway that enables VPC resources to connect to the internet.
+- **Route Tables:** Rules that control how traffic flows within a VPC and outside of it.
+- **NAT Gateway(s) – Optional:** Allows private subnet resources to access the internet without being directly exposed.
+- **Security Group(s):** Stateful firewalls that control inbound and outbound traffic to resources.
+- **Network Access Control List(s) – Optional:** Stateless firewalls that control traffic at the subnet level.
+- **Peering – Optional:** Connects two VPCs for secure communication without using the internet.
+
+**This is the minimum structure of a module:**
+* `main.tf`: Contains the core resource declarations and configurations for the module.
+* `variables.tf`: Defines input variables that allow users to customize the module’s behavior.
+* `outputs.tf`: Provides information about the created resources.
+* `providers`.`tf: Defines the versions used for the providers and terraform
+* `README.md`: Documentation on how to use the module, including descriptions of input variables and outputs.
+
+**After this execute all these terraform files using the below commands one by one**
 
 ```sh
 terraform init
 terraform fmt
 terraform validate
 terraform plan
-terraform apply -ato-approve
+terraform apply -auto-approve
 ```
 
-Now if you want to delete all the resources created through terraform, then write this command.
-
+**Now if you want to delete all the resources created through terraform, then write this command.**
 ```sh
 terraform destroy
 ```
