@@ -1,4 +1,4 @@
-output "vpc-name" {
+output "vpc_id" {
   value = aws_vpc.vpc.id
 }
 output "private_subnet_id" {
@@ -17,6 +17,10 @@ output "ssh_connection" {
   value = "ssh ec2-user@${aws_instance.ec2.public_ip}"
 }
 
-output "web_connection" {
+output "web_ip" {
   value = "http://${aws_instance.ec2.public_ip}"
+}
+
+output "web_fqdn" {
+  value = "http://solomon.emagetech.co"
 }
