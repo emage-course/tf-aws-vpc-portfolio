@@ -21,9 +21,11 @@ resource "aws_instance" "ec2" {
   EOF
 
   tags = {
-    Name        = "portfolio.example.com"
+    Name        = "solomon.emagetech.co"
+    OS = "Red Hat Enterprise 9"
     Environment = "production"
     Owner       = "Cloud team"
+    Managed = "Terraform"
   }
 }
 
